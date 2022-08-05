@@ -6,7 +6,6 @@ app.use(express.json())
 app.use(express.urlencoded({extendeds: false}))
 
 
-require('./controllers/authcontroller')(app)
-require('./controllers/projectController')(app)
+require('./app/controllers/index')(app)
 
 app.listen(3000)
