@@ -1,7 +1,7 @@
 const express = require('express')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
-const User = require('../models/User')
+const User = require('../models/user')
 const router = express.Router()
 const mailer = require('../../modules/mailer')
 const crypto = require('crypto')
@@ -53,8 +53,6 @@ router.post('/authenticate', async (req, res) =>{
 
     //passando undefined para que a senha não seja retornado no response
     user.password = undefined
-    
-
 
     //gerando token com jwt
     //usando id, pois tem de ser uma informação que não deve ser repetida
@@ -130,7 +128,6 @@ router.post('/reset_password', async (req, res) =>{
         user.password = password
         await user.save()
         res.sendStatus(200)
-
 
     } catch (error) {
         return res.status(400).send({ error: 'Error on reset password. Try again later.'})
